@@ -65,8 +65,12 @@ Route::post('/projects/create44', 'ProjectController@create44')->name('projects.
 Route::get('/projects/index5', 'ProjectController@index5')->name('projects.index5');
 Route::post('/projects/create5', 'ProjectController@create5')->name('projects.create5');
 
+
+// upload files 
 Route::get('/projects/index6', 'ProjectController@index6')->name('projects.index6');
 Route::post('/projects/create4', 'ProjectController@create4')->name('projects.create4');
+
+
 
 Route::get('/projects/create-step-2', 'ProjectController@createstep2')->name('projects.create-step-2');
 
