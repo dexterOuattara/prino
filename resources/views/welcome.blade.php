@@ -72,39 +72,52 @@
         <div class="row">
             <div class="col-md-8 contact-form">
                 <h2>Parlons de vos préoccupations</h2>
-                <form action="http://validthemes.com/themeforest/dostart/assets/mail/contact.php" method="POST" class="contact-form">
+                @if($message = Session::get('success'))
+                    <p>{{$message}}</p>
+                @endif
+                <form method="post" action="{{ route('contact.store') }}">
+                    {{ csrf_field() }}
                     <div class="col-md-12">
                         <div class="row">
                             <div class="form-group">
-                                <input class="form-control" id="name" name="name" placeholder="Nom" type="text">
-                                <span class="alert-error"></span>
+                                <input class="form-control" name="name" placeholder="Nom*" type="text">
+                                @if ($errors->has('name'))
+                                    <span class="alert-error text-danger">{{ $errors->first('name') }}</span>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" id="email" name="email" placeholder="Email*" type="email">
-                                <span class="alert-error"></span>
+                                <input class="form-control" name="email" placeholder="Email*" type="email">
+                                @if ($errors->has('email'))
+                                    <span class="alert-error text-danger">{{ $errors->first('email') }}</span>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input class="form-control" id="phone" name="phone" placeholder="Telephone" type="text">
-                                <span class="alert-error"></span>
+                                <input class="form-control" name="phone" placeholder="Telephone" type="text">
+                                @if ($errors->has('phone'))
+                                    <span class="alert-error text-danger">{{ $errors->first('phone') }}</span>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="row">
                             <div class="form-group comments">
-                                <textarea class="form-control" id="commentaire" name="commentaire" placeholder="Parlons de vos préoccupations *"></textarea>
+                                <textarea class="form-control" name="commentaire" placeholder="Parlons de vos préoccupations *"></textarea>
+                                @if ($errors->has('commentaire'))
+                                    <span class="alert-error text-danger">{{ $errors->first('commentaire') }}</span>
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="row">
-                            <button type="submit" name="submit" id="submit">
+                            <button type="submit">
                                 Envoyer Votre Message <i class="fa fa-paper-plane"></i>
                             </button>
                         </div>
